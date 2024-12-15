@@ -3,47 +3,47 @@
 <head>
   <title>Children's Tasks</title>
   <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-database.js"></script>
-  <script>
-    // Replace with your Firebase configuration
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "jzamma.firebaseapp.com",
-      projectId: "jzamma",
-      storageBucket: "jzamma.appspot.com",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-
-    const childId = 'AbdulHameed'; // Replace with the child's ID
-
-    database.ref(`users/${childId}`).on('value', (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        displayTasks('daily', data.daily);
-        displayTasks('weekly', data.weekly);
-        displayTasks('monthly', data.monthly);
-      }
-    });
-
-    function displayTasks(listType, tasks) {
-      const listElement = document.getElementById(`${listType}List`); 
-      listElement.innerHTML = ''; 
-
-      if (tasks) {
-        tasks.forEach(task => {
-          const listItem = document.createElement('li');
-          listItem.textContent = task;
-          listElement.appendChild(listItem);
-        });
-      }
-    }
-  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-database.js"></script> 
 </head>
 <body>
+
+  <h1>[Child Name]'s Tasks</h1>
+
+  <div id="daily">
+    <h2>Daily Tasks</h2>
+    <ul id="dailyList"></ul>
+  </div>
+
+  <div id="weekly">
+    <h2>Weekly Tasks</h2>
+    <ul id="weeklyList"></ul>
+  </div>
+
+  <div id="monthly">
+    <h2>Monthly Tasks</h2>
+    <ul id="monthlyList"></ul>
+  </div>
+
+  <script>
+    // Your Firebase configuration 
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY", 
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com", 
+      projectId: "YOUR_PROJECT_ID", 
+      storageBucket: "YOUR_PROJECT_ID.appspot.com", 
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID", 
+      appId: "YOUR_APP_ID" 
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database(); 
+
+    // ... (Rest of your JavaScript code) 
+  </script>
+
+</body>
+</html>
 
   <h1>[Child Name]'s Tasks</h1>
 
