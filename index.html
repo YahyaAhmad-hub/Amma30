@@ -18,7 +18,7 @@
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
-    const childId = 'child1'; // Replace with the child's ID
+    const childId = 'AbdulHameed'; // Replace with the child's ID
 
     database.ref(`users/${childId}`).on('value', (snapshot) => {
       const data = snapshot.val();
